@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+    --bg-color: #FF8FA3;
+    --pri-text-color: #FF4D6D;
+    --sec-text-color: #FFF0F3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: "Inter", sans-serif;
+}
+
+img {
+    width: inherit;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* First page */
+.first-page {
+    display: none;
+}
+
+.main-text {
+    font-size: 4rem;
+    color: var(--sec-text-color);
+    margin-bottom: -49px;
+}
+
+.sec-text {
+    font-size: 4rem;
+    color: var(--pri-text-color);
+}
+
+.ballon-img {
+    width: 180px;
+    margin: 0px auto -27px;
+}
+
+.small-text {
+    color: var(--sec-text-color);
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+.fade-in-out-animation {
+    animation: fade-in-out-animation 2s ease-in-out infinite;
+}
+
+/* Second pade */
+.card {
+    width: 660px;
+    height: 500px;
+    perspective: 1200px;
+    -webkit-prespective: 1200px;
+    position: relative;
+    transform: translateX(-25%);
+}
+
+.outside:hover {
+    transform: rotateY(-180deg);
+}
+
+.outside, .inside {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 50.1%;
+}
+
+.inside {
+    padding: 20px;
+    text-align: left;
+    background: linear-gradient(to right, #e0e0e0, #fff 30%);
+    left: 50%;
+    border-radius: 0 10px 10px 0;
+}
+
+.outside {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    z-index: 1;
+    transform-origin: left;
+    -webkit-transform-origin: left;
+    transition: 2s;
+    cursor: pointer;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: rotateX(0deg);
+    position: absolute;
+}
+
+.front {
+    background-color: #fff;
+    border-radius: 0 10px 10px 0;
+}
+
+.back {
+    background: linear-gradient(to left, #e0e0e0, #fff 30%);
+    transform: rotateY(180deg);
+    border-radius: 10px 0 0 10px;
+}
+
+.card-title {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 2.9rem;
+    text-align: center;
+    color: var(--pri-text-color);
+}
+
+.card-small-text {
+    font-size: 1rem;
+    color: var(--pri-text-color);
+    margin-top: 50px;
+}
+
+.card-text {
+    color: #333;
+}
+
+@keyframes fade-in-out-animation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}

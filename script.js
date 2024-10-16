@@ -1,6 +1,7 @@
 // Pages
 const firstPage = document.querySelector(".first-page");
 const secondPage = document.querySelector(".second-page");
+const thirdPage = document.querySelector(".third-page");
 
 
 // Page One
@@ -12,6 +13,12 @@ const smlText = document.querySelector(".small-text");
 
 // Page Two
 const card = document.querySelector(".card");
+const cardBtn = document.querySelector(".inside .btn");
+
+// Page three
+const candleConatiner = document.querySelector(".candle-container");
+const candles = document.querySelectorAll(".candle");
+var candleBlowOut = 0;
 
 var end = Date.now() + (5 * 1000);
 
@@ -41,8 +48,17 @@ window.onload = () => {
 
 setTimeout(() => {
     firstPage.onclick = () => {
-        firstPage.style.display = 'none';
-        secondPage.style.display = 'inline';
+        setTimeout(() => {
+            mainText.classList.remove("visible");
+            secText.classList.remove("visible");
+            ballonImg.classList.remove("visible");
+            cakeImg.classList.remove("visible");
+            smlText.classList.remove("visible");
+            smlText.classList.remove("fade-in-out-animation");
+            setTimeout(() => {
+                firstPage.style.display = 'none';
+            }, 1000)
+        }, 1000)
 
         secondPageStructure();
     }
@@ -72,13 +88,58 @@ function celebrationAnimaion() {
     }());
 }
 
+// Second page
 function secondPageStructure() {
     card.classList.remove("visible");
+
     setTimeout(() => {
-        card.classList.add("visible");
-    }, 500)
+        secondPage.style.display = 'inline';
+        setTimeout(() => {
+            card.classList.add("visible");
+        }, 500)
+    }, 2000)
 }
 
 card.onclick = () => {
     card.classList.toggle("clicked");
 }
+
+cardBtn.onclick = () => {
+    setTimeout(() => {
+        card.classList.remove("clicked");
+        card.classList.remove("visible");
+        setTimeout(() => {
+            secondPage.style.display = "none";
+            thirdPageStructure();
+        }, 500);
+    }, 1500);
+}
+
+// Third page
+function thirdPageStructure() {
+    candleConatiner.classList.remove("visible");
+
+    setTimeout(() => {
+        thirdPage.style.display = 'inline';
+        setTimeout(() => {
+            candleConatiner.classList.add("visible");
+        }, 500)
+    }, 100)
+}
+
+candles.forEach(candle => {
+    const flame = candle.querySelector(".candle-flame");
+    candle.onclick = () => {
+        flame.classList.add("unvisible");
+        candle.setAttribute("blowed-out", "true");
+        if (candle.getAttribute("blow-out") != "true") {
+            candleBlowOut++;
+
+            setTimeout(() => {
+                if (candleBlowOut >= 3) {
+                    alert("all candles blowed out");
+                }
+            }, 500)
+        }
+    }
+})

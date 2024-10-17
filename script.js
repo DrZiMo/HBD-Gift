@@ -20,6 +20,18 @@ const candleConatiner = document.querySelector(".candle-container");
 const candles = document.querySelectorAll(".candle");
 var candleBlowOut = 0;
 
+// Page four
+const fourthPage = document.querySelector(".fourth-page");
+const wishText = document.querySelector(".fourth-page textarea");
+const wishBtn = document.querySelector(".fourth-page .btn");
+
+// Page five
+const fifthPage = document.querySelector(".fifth-page");
+const age = document.querySelector(".age");
+const ageText = document.querySelector(".age-small-text");
+const ageComment = document.querySelector(".age-small-comment");
+const secondNumber = document.querySelector(".second-number");
+
 var end = Date.now() + (5 * 1000);
 
 var colors = ['#FF4D6D', '#FFF0F3'];
@@ -97,7 +109,7 @@ function secondPageStructure() {
         setTimeout(() => {
             card.classList.add("visible");
         }, 500)
-    }, 2000)
+    }, 1800)
 }
 
 card.onclick = () => {
@@ -137,9 +149,75 @@ candles.forEach(candle => {
 
             setTimeout(() => {
                 if (candleBlowOut >= 3) {
-                    alert("all candles blowed out");
+                    candleConatiner.classList.remove("visible");
+                    fourthPageStructure();
                 }
-            }, 500)
+            }, 800)
         }
     }
 })
+
+// fourth page
+function fourthPageStructure() {
+    fourthPage.classList.remove("visible");
+    setTimeout(() => {
+        thirdPage.style.display = "none";
+    }, 1000)
+
+    setTimeout(() => {
+        fourthPage.style.display = 'inline';
+        setTimeout(() => {
+            fourthPage.classList.add("visible");
+        }, 500)
+    }, 1000)
+}
+
+wishBtn.onclick = () => {
+    const errMsg = document.querySelector(".err-msg");
+    var wishValue = wishText.value;
+    if (wishValue != "") {
+        errMsg.style.display = "none";
+        // add the email
+        fourthPage.classList.remove("visible");
+
+        fifthPageStructure();
+    }
+    else {
+        errMsg.style.display = "block";
+    }
+}
+
+function fifthPageStructure() {
+    ageText.classList.remove("visible");
+    ageComment.classList.remove("visible");
+    age.classList.remove("visible");
+
+    setTimeout(() => {
+        fourthPage.style.display = "none";
+    }, 1000);
+
+    setTimeout(() => {
+        fifthPage.style.display = "inline";
+
+        setTimeout(() => {
+            celebrationAnimaion();
+            ageText.classList.add("visible");
+            age.classList.add("visible");
+
+            setTimeout(() => {
+                secondNumber.classList.add("changed");
+                setTimeout(() => {
+                    ageComment.classList.add("visible");
+
+                    setTimeout(() => {
+                        ageText.classList.remove("visible");
+                        ageComment.classList.remove("visible");
+                        age.classList.remove("visible");
+
+                        // sixthPageStructure();
+                    }, 3500)
+                }, 2000)
+            }, 1500);
+        }, 500)
+    }, 1000)
+}

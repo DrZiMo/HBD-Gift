@@ -32,6 +32,11 @@ const ageText = document.querySelector(".age-small-text");
 const ageComment = document.querySelector(".age-small-comment");
 const secondNumber = document.querySelector(".second-number");
 
+// Page six
+const sixthPage = document.querySelector(".sixth-page");
+const messageContainer = document.querySelector(".message");
+const messageSmallText = document.querySelector(".message-small-text");
+
 var end = Date.now() + (5 * 1000);
 
 var colors = ['#FF4D6D', '#FFF0F3'];
@@ -187,6 +192,7 @@ wishBtn.onclick = () => {
     }
 }
 
+// fifth page
 function fifthPageStructure() {
     ageText.classList.remove("visible");
     ageComment.classList.remove("visible");
@@ -214,10 +220,32 @@ function fifthPageStructure() {
                         ageComment.classList.remove("visible");
                         age.classList.remove("visible");
 
-                        // sixthPageStructure();
+                        sixthPageStructure();
                     }, 3500)
                 }, 2000)
             }, 1500);
+        }, 500)
+    }, 1000)
+}
+
+// sixth page
+function sixthPageStructure() {
+    messageContainer.classList.remove("visible");
+    messageSmallText.classList.remove("visible");
+
+    setTimeout(() => {
+        fifthPage.style.display = "none";
+    }, 1000);
+
+    setTimeout(() => {
+        sixthPage.style.display = "inline";
+
+        setTimeout(() => {
+            messageContainer.classList.add("visible");
+
+            setTimeout(() => {
+                messageSmallText.classList.add("visible");
+            }, 3000)
         }, 500)
     }, 1000)
 }

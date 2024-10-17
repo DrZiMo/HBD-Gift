@@ -412,6 +412,49 @@ img {
     transform: translateY(-215px);
 }
 
+/* sixth page */
+.sixth-page {
+    display: none;
+}
+
+.message {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 15px;
+    border: 3px solid var(--pri-text-color);
+    border-radius: 10px;
+    line-height: 29px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message-title {
+    color: var(--pri-text-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.message-small-text {
+    color: #fff;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.message-small-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @keyframes fade-in-out-animation {
     0% {
         opacity: 0;

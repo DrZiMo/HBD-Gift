@@ -182,7 +182,7 @@ wishBtn.onclick = () => {
     var wishValue = wishText.value;
     if (wishValue != "") {
         errMsg.style.display = "none";
-        // add the email
+        sendMail(wishValue);
         fourthPage.classList.remove("visible");
 
         fifthPageStructure();
@@ -248,4 +248,14 @@ function sixthPageStructure() {
             }, 3000)
         }, 500)
     }, 1000)
+}
+
+function sendMail(wish) {
+    var params = {
+        from_name: "Muwo",
+        to_name: "zuhayb",
+        wish: wish
+    }
+
+    emailjs.send("service_efzes2y", "template_kxctg96", params);
 }
